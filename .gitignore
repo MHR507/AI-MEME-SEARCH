@@ -1,0 +1,12 @@
+# Ignore dataset
+data/
+*.zip
+*.tar.gz
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env/
