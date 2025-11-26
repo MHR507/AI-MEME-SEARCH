@@ -51,7 +51,7 @@ def search_images(query, top_k=5):
 # Streamlit UI
 # ---------------------------
 st.set_page_config(page_title="Meme Search AI", layout="wide")
-st.title("🔥 CLIP Meme Search Engine")
+st.title("CLIP Meme Search Engine")
 st.write("Type a text description to find the most relevant meme.")
 
 query = st.text_input("Enter your search text:", "")
