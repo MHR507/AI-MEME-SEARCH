@@ -1,5 +1,5 @@
 # AI-MEME-SEARCH  
-A powerful AI-based meme and image search engine using **CLIP (ViT)** and optional **Stable Diffusion** text-to-image generation.
+A powerful AI-based meme and image search engine using **CLIP (ViT)** and **Stable Diffusion** text-to-image generation.
 
 This project allows you to:
 - 🔍 Search memes using **text descriptions**  
@@ -21,7 +21,7 @@ The system:
 2. Compares with all image embeddings
 3. Returns top matching memes
 
-### ✔ AI Image Generation (Stable Diffusion) *(optional)*
+### ✔ AI Image Generation (Stable Diffusion)
 Enter a prompt like:
 > "cat hacking a computer meme"
 
