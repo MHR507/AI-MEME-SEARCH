@@ -3,14 +3,8 @@ import torch
 from diffusers import StableDiffusionPipeline
 from PIL import Image
 
-# ---------------------------
-# Setup Device
-# ---------------------------
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-# ---------------------------
-# Load Stable Diffusion Model
-# ---------------------------
 @st.cache_resource
 def load_sd():
     pipe = StableDiffusionPipeline.from_pretrained(
@@ -27,9 +21,6 @@ def load_sd():
 
 pipe = load_sd()
 
-# ---------------------------
-# Streamlit UI
-# ---------------------------
 st.set_page_config(page_title="Stable Diffusion Generator", layout="wide")
 st.title("Stable Diffusion Image Generator")
 st.write("Generate images using Stable Diffusion.")

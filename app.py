@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import streamlit as st
 import torch
 import numpy as np
@@ -9,14 +6,8 @@ import os
 from transformers import CLIPProcessor, CLIPModel
 from sklearn.metrics.pairwise import cosine_similarity
 
-# ---------------------------
-# Device Setup
-# ---------------------------
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-# ---------------------------
-# Load Model + Embeddings
-# ---------------------------
 @st.cache_resource
 def load_model():
     model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(device)
@@ -32,9 +23,6 @@ def load_embeddings():
 model, processor = load_model()
 embeddings, image_paths = load_embeddings()
 
-# ---------------------------
-# Search Function
-# ---------------------------
 def search_images(query, top_k=5):
     text_inputs = processor(text=[query], return_tensors="pt").to(device)
     text_emb = model.get_text_features(**text_inputs)
@@ -47,9 +35,6 @@ def search_images(query, top_k=5):
     results = [(image_paths[i], sims[i]) for i in idx]
     return results
 
-# ---------------------------
-# Streamlit UI
-# ---------------------------
 st.set_page_config(page_title="Meme Search AI", layout="wide")
 st.title("CLIP Meme Search Engine")
 st.write("Type a text description to find the most relevant meme.")
@@ -67,5 +52,4 @@ if st.button("Search") and query.strip() != "":
     for i, (path, score) in enumerate(results):
         img = Image.open(path).convert("RGB")
         with cols[i % 3]:
-            # Updated parameter to use_container_width instead of deprecated use_column_width
             st.image(img, caption=f"Score: {score:.4f}", use_container_width=True)
